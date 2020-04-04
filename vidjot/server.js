@@ -6,7 +6,7 @@ const session = require("express-session");
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const path = require('path')
-
+const passport = require('passport');
 
 const app = express();
 
@@ -15,6 +15,9 @@ const app = express();
 
 const ideas = require('./routes/ideas');
 const users = require('./routes/users');
+
+require('./config/passport')(passport);
+
 
 // connect db 
 
@@ -52,12 +55,16 @@ app.use(session({
 
 }));
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(flash());
 
 app.use(function(req,res,next){
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');
+  res.locals.user = req.user || null;
   next();
 });
 

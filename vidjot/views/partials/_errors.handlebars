@@ -1,5 +1,9 @@
+{{#if error}}
+    <div class="alert alert-danger mt-4">{{error}}</div>
+
+{{/if}}
 {{#each errors}}
-    <div class="alert alert-danger">{{text}}</div>
+    <div class="alert alert-danger mt-2">{{text}}</div>
 {{else}}
 
 {{/each}}
