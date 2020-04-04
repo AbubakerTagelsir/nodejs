@@ -1,2 +1,7 @@
 vidjot/node_modules/*
 vidjot/node_modules/.bin/*
+
+storybooks/node_modules/*
+storybooks/node_modules/.bin/*
+
+*/package-lock.json
